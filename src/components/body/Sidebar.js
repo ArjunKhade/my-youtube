@@ -13,8 +13,8 @@ const Sidebar = () => {
       <h1 className="font-bold pt-6">Subscription</h1>
       <ul>
         <li>Music</li>
-        <li>Music</li>
-        <li>Music</li>
+        <li>Video</li>
+        <li>Live</li>
         <li>Music</li>
       </ul>
 
