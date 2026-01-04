@@ -1,12 +1,21 @@
 import React from 'react'
 import { LOGO, MENU, SEARCH, USER_AVATAR } from '../../constant/constant'
+import { useDispatch } from 'react-redux'
+import { toggleMenu } from '../../store/appSlice';
 
 const Head = () => {
+
+  const dispatch = useDispatch();
+
+  const handleToggle = () => {
+     dispatch(toggleMenu());
+  }
+
   return (
     <div className='grid grid-flow-col p-5 m-2 shadow-lg'>
     <div className='flex col-span-1'>
-      <img className='h-8' src={MENU} alt='hamberger'/>
-      <img className='h-8 mx-3' src={LOGO} alt='logo'/>
+      <img onClick={() => handleToggle()} className='h-8 cursor-pointer' src={MENU} alt='hamberger'/>
+      <img className='h-8 mx-3 cursor-pointer' src={LOGO} alt='logo'/>
     </div>
 
     <div className='col-span-10 align-middle'>
