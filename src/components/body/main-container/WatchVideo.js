@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { closeMenu } from "../../../store/appSlice";
 import { useSearchParams } from "react-router-dom";
 import CommentContainer from "./CommentContainer";
+import LiveChat from "./LiveChat";
 const WatchVideo = () => {
   const dispatch = useDispatch();
 
@@ -16,7 +17,8 @@ const WatchVideo = () => {
   }, []);
   return (
     <div className="flex-col">
-    <div className="px-6">
+    <div className="px-6 flex">
+      <div>
       <iframe
         width="1100"
         height="500"
@@ -25,7 +27,11 @@ const WatchVideo = () => {
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         referrerPolicy="strict-origin-when-cross-origin"
         allowFullScreen
-      ></iframe>
+        ></iframe>
+        </div>
+      <div>
+        <LiveChat/>
+      </div>
     </div>
     <CommentContainer/>
     </div>
