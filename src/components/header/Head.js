@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { LOGO, MENU, USER_AVATAR, YOUTUBE_SEARCH_API } from '../../constant/constant'
+import { LOGO, MENU, SEARCH, USER_AVATAR, YOUTUBE_SEARCH_API } from '../../constant/constant'
 import { useDispatch, useSelector } from 'react-redux'
 import { toggleMenu } from '../../store/appSlice';
 import { Link } from 'react-router-dom';
 import { cacheSearch } from '../../store/searchSlice';
+import { addSuggetion } from '../../store/suggestionSlice';
 
 const Head = () => {
  
@@ -65,7 +66,7 @@ const Head = () => {
       </div>
 
       <div className="col-span-10 align-middle">
-        <div className='relative'>
+        <div className='relative flex'>
           <input
             className="w-1/2 border border-gray-400 p-2 px-4 rounded-l-full"
             type="text"
@@ -74,21 +75,23 @@ const Head = () => {
             onFocus={()=> setShowSuggetions(true)}
             onBlur={()=> setShowSuggetions(false)}
           ></input>
-          {/* <img className='absolute top-6 w-[24px] h-[24px]' src={SEARCH} alt='search'/> */}
-          <button className="border border-gray-400 p-2 px-3 rounded-r-full">
+          <img className='border border-gray-400 p-2 px-3 rounded-r-full' src={SEARCH} alt='search'/>
+          {/* <button className="border border-gray-400 p-2 px-3 rounded-r-full">
             🔍
-          </button>
+          </button> */}
         </div>
 
-       { showSuggetions && <div className='absolute bg-white p-4 px-4 w-[33rem] shadow-lg border border-gray-100 rounded-lg'>
+       { query && showSuggetions && <div className='absolute bg-white p-4 px-4 w-[33rem] shadow-lg border border-gray-100 rounded-lg'>
           <ul>
             {suggetions.map((s)=> 
-            <li key={s} className='py-2 px-2 shadow-sm hover:bg-gray-100'>🔍 {s} </li>
+            <li key={s} className=' flex py-2 px-2 shadow-sm hover:bg-gray-100' onMouseDown={() =>
+              dispatch(addSuggetion(s))
+            }>
+               <img className='mr-2' src={SEARCH} alt='search'/>
+              {s} </li>
             )}
           </ul>
         </div>}
-
-
 
       </div>
 
