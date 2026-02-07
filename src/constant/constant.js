@@ -9,3 +9,4 @@ export const YOUTUBE_SEARCH_API = (query) => {
     return 'http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q='+query;
 }
 
+export const LIVE_CHAT = 25;
